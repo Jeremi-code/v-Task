@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-
+import mongoose, {Document} from "mongoose";
+import {DTask} from "../types/taskType";
 const taskSchema = new mongoose.Schema({
     text : {
         type: String,
@@ -14,5 +14,5 @@ const taskSchema = new mongoose.Schema({
         required: true
     }
 })
-const Task = mongoose.model('Task', taskSchema)
+const Task = mongoose.model<DTask>('Task', taskSchema)
 export default Task
