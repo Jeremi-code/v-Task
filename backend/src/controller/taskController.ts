@@ -1,14 +1,10 @@
 import { Request, Response } from "express";
 import Task from "../model/task";
-type task = {
-  _id?: string;
-  text: string;
-  day: string;
-  reminder: boolean;
-};
+import {DTask} from "../types/taskType"
+
 const fetchTasks = async (req: Request, res: Response) => {
   try {
-    const tasks: task[] = await Task.find();
+    const tasks: DTask[] = await Task.find();
     res.json(tasks);
   } catch (error : any) {
     res.status(500).json({ message: error.message });
@@ -16,7 +12,7 @@ const fetchTasks = async (req: Request, res: Response) => {
 };
 const fetchTask = async (req: Request, res: Response) => {
   try {
-    const task: task | null = await Task.findById(req.params.id);
+    const task: DTask | null = await Task.findById(req.params.id);
     if (task) {
       res.json(task);
     } else {
@@ -27,7 +23,7 @@ const fetchTask = async (req: Request, res: Response) => {
   }
 };
 const createTask = async (req: Request, res: Response) => {
-    const task: task = new Task({
+    const task: DTask = new Task({
         text: req.body.text,
         day: req.body.day,
         reminder: req.body.reminder,
@@ -42,7 +38,7 @@ const createTask = async (req: Request, res: Response) => {
 const updateTask = async (req: Request, res: Response) => {
   const { text,date,reminder } = req.body;
   try {
-    const task = await Task.findById(req.params.id);
+    const task : DTask | null = await Task.findById(req.params.id);
     if (task) {
       task.text = text;
       task.day = date;
@@ -58,9 +54,9 @@ const updateTask = async (req: Request, res: Response) => {
 };
 const deleteTask = async (req: Request, res: Response) => {
   try {
-    const task = await Task.findById(req.params.id);
+    const task : DTask | null = await Task.findById(req.params.id);
     if (task) {
-      await task.remove();
+      await task.deleteOne();
       res.json({ message: "Task deleted" });
     } else {
       res.status(404).json({ message: "Task not found" });
@@ -69,3 +65,5 @@ const deleteTask = async (req: Request, res: Response) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export  {fetchTask,fetchTasks,createTask,updateTask,deleteTask}
