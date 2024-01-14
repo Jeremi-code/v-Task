@@ -1,40 +1,26 @@
-<script setup lang="ts">
-import { TrackOpTypes } from 'vue';
-import {task} from './types/TaskType'
-  name : 'Task'
-  props : defineProps< {
-    'task' : task,
-    'onDelete' :any ,
-    'onToggle' : any ,
-  }> ();
-  setup() {
+<script  lang="ts">
+  import Task from "./components/Task.vue"
+  import { defineComponent } from "vue";
+  export default defineComponent ({
+    name : 'App',
+    components : {Task},
+    setup() {
+      const fetchTasks = async () {
+         const res = await fetch("http://localhost:5173/tasks")
+         const data = res.json()
+         return data
+      }
+    }
 
-  }
+  });
+
 </script>
 
 <template>
-  <div :class="task.reminder ? reminder  : "">
-  <h3>{{ task.text }} X</h3>
-  <p>{{ task.day }}</p>
-</div>
+  <div>
+  </div>
 </template>
 
 <style scoped>
-.task {
-  background: #f4f4f4;
-  margin: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.task.reminder {
-  border-left: 5px solid green;
-}
-
-.task h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 </style>
