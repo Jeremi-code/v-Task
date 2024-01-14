@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class = "header">
         <h1>Task Tracker</h1>
         <Button :onClick="onAdd" :title="showAdd ? 'Close' : 'Add'" :color = "showAdd ? 'red' : 'green'"></Button>
     </header>
