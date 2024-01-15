@@ -21,7 +21,7 @@ export default defineComponent ({
         },
         body : JSON.stringify(task)
       })
-      const data : task = res.json()
+      const data : task =  await res.json()
       tasks.value!.push(data)
     }
 
