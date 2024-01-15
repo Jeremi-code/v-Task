@@ -9,6 +9,7 @@ export default defineComponent ({
   components : {Task,Header},
   setup() {
     let tasks = ref<task[] | null> (null)
+    const showAdd = ref<boolean>(false)
     const fetchTasks = async () => {
        const res = await fetch("http://localhost:5173/tasks")
        const data : task[] = await res.json()
@@ -58,14 +59,14 @@ export default defineComponent ({
       getTasks()
 
     })
-    return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks}
+    return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks,showAdd}
   }
 });
 </script>
 
 <template>
   <div>
-    <Header/>
+    <Header :showAdd="showAdd" :onAdd="addTasks"/>
   </div>
 </template>
 
