@@ -1,34 +1,42 @@
 <script  lang="ts">
   import Task from "./components/Task.vue"
   import { defineComponent } from "vue";
-import { application, json } from "express";
+  import { task } from "./types/TaskType";
+  import {onMounted,ref } from "vue";
   export default defineComponent ({
     name : 'App',
     components : {Task},
     setup() {
-      const tasks = ref ()
+      let tasks = ref<task[] | null> (null)
       const fetchTasks = async () => {
          const res = await fetch("http://localhost:5173/tasks")
          const data = res.json()
          return data
       }
-      const addTasks = async (task) => {
-        const res = await fetch("http://localhost:5173/task",{
+      const addTasks = async (task:task) => {
+        const res : any = await fetch("http://localhost:5173/task",{
           method : 'POST',
           headers : {
             'Content-Type':'application/json'
           },
           body : JSON.stringify(task)
         })
-        const data = res.json()
-        tasks = [...tasks,data]
+        const data : task = res.json()
+        tasks.value!.push(data)
+        // if (tasks.value === null) {
+        //   tasks.value = data
+        // } else {
+        //   tasks.value.push(data)
+        // }
       }
       
       const deleteTask = async (id : string) => {
-        const res = await fetch(`http://localhost:5173/task/${id}`, {
+         await fetch(`http://localhost:5173/task/${id}`, {
           method : 'DELETE'
         })
-        tasks.filter((task) => task.id !== id)
+        if (tasks.value !== null) {
+          tasks.value.filter((task) => task.id !== id)
+        }
       }
       const fetchTask = async (id:string) => {
         const res = await fetch(`http://localhost:5173/task/${id}`)
@@ -36,19 +44,21 @@ import { application, json } from "express";
         return data
       }
       const toggleReminder = async (id:string) => {
-        const taskToggle = await fetch(`http://localhost:5173/task/${id}`)
-        const updTask = {...taskToggle,reminder : !taskToggle.reminder}
+        // const taskToggle : task = await fetch(`http://localhost:5173/task/${id}`)
+        // const updTask = {...taskToggle,reminder : !taskToggle.reminder}
         const res = await fetch(`http://localhost:5173/task/${id}`, {
           method : 'PUT'
         })
         const data = res.json()
-        tasks = tasks.map((task) => 
+        tasks = tasks.value!.map((task : task) => 
           task.id===id ? {...task,reminder:data.reminder} : task
         )
 
       }
-  
+      onMounted(() => {
 
+      })
+      return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks}
   });
 
 </script>
