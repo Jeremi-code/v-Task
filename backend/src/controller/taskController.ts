@@ -44,7 +44,7 @@ const updateTask = async (req: Request, res: Response) => {
       task.day = date || task.day;
       task.reminder = reminder || task.reminder;
       const updatedTask = await task.save();
-      res.json(updatedTask);
+      res.status(201).json(updatedTask);
     } else {
       res.status(404).json({ message: "Task not found" });
     }
