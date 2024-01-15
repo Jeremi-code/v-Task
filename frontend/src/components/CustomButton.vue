@@ -1,20 +1,23 @@
 <template>
   <div>
 
-    <button class="btn" :style="{background : color}">{{ title }} </button>
+    <button class="btn" :style="{background : color}" @click="onAdd">{{ title }} </button>
   </div>
 
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "CustomButton",
   props: {
     title : String ,
     color : String,
-    onAdd : Function
+    onAdd : {
+      required : true,
+      type : Function as PropType<(event:MouseEvent)=> void>,
+    }
   },
 });
 </script>
