@@ -50,13 +50,13 @@ export default defineComponent ({
       )
 
     }
-    onMounted(() => {
+    onMounted(async () => {
       const getTasks = async () => {
         const data = await fetchTasks()
         tasks.value=data
       }
 
-      getTasks()
+      await getTasks()
 
     })
     return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks,showAdd}
