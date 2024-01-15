@@ -1,11 +1,12 @@
 <script lang="ts">
 import Task from "./components/Task.vue"
+import Header from "./components/Header.vue"
 import { defineComponent } from "vue";
 import { task } from "./types/TaskType";
 import {onMounted,ref } from "vue";
 export default defineComponent ({
   name : 'App',
-  components : {Task},
+  components : {Task,Header},
   setup() {
     let tasks = ref<task[] | null> (null)
     const fetchTasks = async () => {
@@ -64,7 +65,7 @@ export default defineComponent ({
 
 <template>
   <div>
-    <h1></h1>
+    <Header/>
   </div>
 </template>
 
