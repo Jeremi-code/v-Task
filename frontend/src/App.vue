@@ -48,7 +48,10 @@ export default defineComponent ({
       tasks.value= tasks.value!.map((task : task) =>
         task.id===id ? {...task,reminder:data.reminder} : task
       )
-
+      
+    }
+    const toggleShowAdd = () => {
+      showAdd.value = !showAdd.value
     }
     onMounted(async () => {
       const getTasks = async () => {
@@ -59,14 +62,14 @@ export default defineComponent ({
       await getTasks()
 
     })
-    return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks,showAdd}
+    return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks,showAdd,toggleShowAdd}
   }
 });
 </script>
 
 <template>
   <div>
-    <Header :showAdd="showAdd" :onAdd="addTasks"/>
+    <Header :showAdd="showAdd" :onAdd="toggleShowAdd"/>
   </div>
 </template>
 
