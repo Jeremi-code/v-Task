@@ -1,17 +1,20 @@
 <template>
-  <button class="btn">{{ title }}</button>
+  <div>
+
+    <button class="btn" :style="{background : color}">{{ title }} </button>
+  </div>
+
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Button",
+  name: "CustomButton",
   props: {
-    title: {
-      required: true,
-      type: String,
-    },
+    title : String ,
+    color : String,
+    onAdd : Function
   },
 });
 </script>
