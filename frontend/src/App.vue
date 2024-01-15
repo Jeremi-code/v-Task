@@ -68,9 +68,20 @@ export default defineComponent ({
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <Header :showAdd="showAdd" :onAdd="toggleShowAdd"/>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+</style>
