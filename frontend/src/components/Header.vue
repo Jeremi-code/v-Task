@@ -1,21 +1,25 @@
 <template>
     <header class = "header">
         <h1>Task Tracker</h1>
-        <CustomButton :onClick="onAdd" :title="showAdd ? 'Close' : 'Add'" :color = "showAdd ? 'red' : 'green'"/>
+        <CustomButton :onAdd="onAdd" :title="showAdd ? 'Close' : 'Add'" :color = "showAdd ? 'red' : 'green'"/>
         
     </header>
 </template>
 
 <script lang="ts">
-    import { defineComponent } from "vue";
+    import { defineComponent, PropType } from "vue";
     import CustomButton from "./CustomButton.vue"
     export default defineComponent({
         name : 'Header',
         components : {CustomButton},
         props : {
-            onAdd : Function,
+            onAdd : {
+                required:true,
+                type:Function as PropType <(event:MouseEvent) => void>
+            },
             showAdd : Boolean
-        }
+        },
+
     })
     
 
