@@ -10,7 +10,7 @@ export default defineComponent ({
     let tasks = ref<task[] | null> (null)
     const fetchTasks = async () => {
        const res = await fetch("http://localhost:5173/tasks")
-       const data : task = await res.json()
+       const data : task[] = await res.json()
        return data
     }
     const addTasks = async (task:task) => {
@@ -49,6 +49,12 @@ export default defineComponent ({
 
     }
     onMounted(() => {
+      const getTasks = async () => {
+        const data = await fetchTasks()
+        tasks.value=data
+      }
+
+      getTasks()
 
     })
     return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks}
