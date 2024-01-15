@@ -35,7 +35,7 @@ export default defineComponent ({
     }
     const fetchTask = async (id:string) => {
       const res = await fetch(`http://localhost:5173/task/${id}`)
-      const data = res.json()
+      const data = await res.json()
       return data
     }
     const toggleReminder = async (id:string) => {
