@@ -4,9 +4,10 @@ import Header from "./components/Header.vue"
 import { defineComponent } from "vue";
 import { task } from "./types/TaskType";
 import {onMounted,ref } from "vue";
+import AddTask from "./components/AddTask.vue";
 export default defineComponent ({
   name : 'App',
-  components : {Task,Header},
+  components : { Task, Header, AddTask },
   setup() {
     let tasks = ref<task[] | null> (null)
     const showAdd = ref<boolean>(false)
@@ -70,6 +71,7 @@ export default defineComponent ({
 <template>
   <div class="container">
     <Header :showAdd="showAdd" :onAdd="toggleShowAdd"/>
+    <AddTask v-if="showAdd" />
   </div>
 </template>
 
