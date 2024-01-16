@@ -19,14 +19,17 @@
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
-    // props:{
-        
-    // }
-    setup() {
+    props:{
+      addTask : {
+        type:Function,
+        required:true
+      }  
+    },
+    setup(props) {
         const text = ref<String | null>(null)
         const day = ref<String | null>(null)
         const reminder = ref<boolean>(false)
-
+        const addTask = props.addTask
         const setText = (target:string) => {
             text.value = target
         }
@@ -38,7 +41,11 @@ export default defineComponent({
         }
         const onSubmit = (event:Event) => {
             event.preventDefault()
-            // onAdd({text : text.value,day : day.value , reminder : reminder.value})
+            if(!text.value){
+                alert('Please add a task')
+                return
+            }
+            addTask({text:text.value,day:day.value,reminder:reminder.value})
             setText('')
             setDate('')
             setReminder(false)
