@@ -12,7 +12,7 @@
             <label>Set Reminder</label>
             <input type="checkbox" @change="setReminder(($event.target as HTMLInputElement).checked)" v-model="reminder" >
         </div>
-        <button>Save Task</button>
+        <input type="submit" value="Save Task" class="btn btn-block"/>
     </form>
 </template>
 <script lang="ts">
@@ -47,3 +47,65 @@ export default defineComponent({
     },
 })
 </script>
+<style scoped>
+.add-form {
+  margin-bottom: 40px;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+</style>
