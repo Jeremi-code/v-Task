@@ -71,7 +71,7 @@ export default defineComponent ({
 <template>
   <div class="container">
     <Header :showAdd="showAdd" :onAdd="toggleShowAdd"/>
-    <AddTask v-if="showAdd" />
+    <AddTask v-if="showAdd" :addTask="addTasks" />
   </div>
 </template>
 
