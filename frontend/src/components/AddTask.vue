@@ -8,7 +8,7 @@
             <label>Day & Time</label>
             <input type="text" @change="setDate(($event.target as HTMLInputElement).value)" v-model="day"/>
         </div>
-        <div class="form-control">
+        <div class="form-control form-control-check">
             <label>Set Reminder</label>
             <input type="checkbox" @change="setReminder(($event.target as HTMLInputElement).checked)" v-model="reminder" >
         </div>
