@@ -12,13 +12,12 @@ export default defineComponent ({
     let tasks = ref<task[] | null> (null)
     const showAdd = ref<boolean>(false)
     const fetchTasks = async () => {
-       const res = await fetch("http://localhost:5000/api/tasks", {
-       })
+       const res = await fetch("/api/tasks")
        const data : task[] = await res.json()
        return data
     }
     const addTasks = async (task:task) => {
-      const res : any = await fetch("http://localhost:5000/task",{
+      const res : any = await fetch("/api/task",{
         method : 'POST',
         headers : {
           'Content-Type':'application/json'
@@ -30,7 +29,7 @@ export default defineComponent ({
     }
 
     const deleteTask = async (id : string) => {
-       await fetch(`http://localhost:5000/task/${id}`, {
+       await fetch(`/api/task/${id}`, {
         method : 'DELETE'
       })
       if (tasks.value !== null) {
@@ -38,12 +37,12 @@ export default defineComponent ({
       }
     }
     const fetchTask = async (id:string) => {
-      const res = await fetch(`http://localhost:5000/task/${id}`)
+      const res = await fetch(`/api/task/${id}`)
       const data = await res.json()
       return data
     }
     const toggleReminder = async (id:string) => {
-      const res = await fetch(`http://localhost:5000/task/${id}`, {
+      const res = await fetch(`/api/task/${id}`, {
         method : 'PUT'
       })
       const data : task = await res.json()
