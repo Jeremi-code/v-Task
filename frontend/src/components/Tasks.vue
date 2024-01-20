@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-for="task in tasks">
-            <Task/>
+        <div v-for="Task in Tasks">
+            <Task :Task="Task"/>
         </div>
     </div>
 </template>
