@@ -1,7 +1,7 @@
 <template>
-  <div :class="{task:true , reminder:task.reminder}">
-    <h3>{{ task.text }}</h3>
-    <p></p>
+  <div :class="{task:true , reminder:Task.reminder}">
+    <h3>{{ Task.text }}</h3>
+    <p>{{ Task.day }}</p>
   </div>
 </template>
 
@@ -11,9 +11,9 @@ import { defineComponent, PropType } from "vue";
 export default defineComponent ({
   name : 'Task',
   props : {
-    task : {
+    Task : {
       required : true,
-      type : Array as PropType<task[]>
+      type : Object as PropType<task>
     },
     onToggle : {
       required : true,
