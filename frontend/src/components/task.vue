@@ -1,6 +1,6 @@
 <template>
   <div :class="{task:true , reminder:Task.reminder}">
-    <h3>{{ Task.text }}</h3>
+    <h3>{{ Task.text }}  </h3>
     <p>{{ Task.day }}</p>
   </div>
 </template>
@@ -14,16 +14,16 @@ export default defineComponent ({
     Task : {
       required : true,
       type : Object as PropType<task>
-    },
-    onToggle : {
-      required : true,
-      type : Function
-    },
-    onDelete : {
-      required : true ,
-      type : Function
+    }
+  //   onToggle : {
+  //     required : true,
+  //     type : Function
+  //   },
+  //   onDelete : {
+  //     required : true ,
+  //     type : Function
 
-  }
+  // }
   }
 })
 
@@ -44,6 +44,10 @@ export default defineComponent ({
 .task h3 {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin:0;
+  /* justify-content: space-between; */
+}
+.task p {
+  margin : 0;
 }
 </style>
