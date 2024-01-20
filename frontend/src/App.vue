@@ -78,6 +78,11 @@ export default defineComponent ({
 </template>
 
 <style scoped>
+*{
+  box-sizing : border-box;
+  padding : 0px;
+  margin : 0px;
+}
 .container {
   max-width: 500px;
   margin: 30px auto;
