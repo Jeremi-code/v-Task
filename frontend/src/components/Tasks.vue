@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="Task in Tasks" v-bind:key="Task.id">
-            <Task :Task="Task" />
+            <Task :Task="Task" :onToggle="onToggle"/>
         </div>
     </div>
 </template>
@@ -14,7 +14,11 @@ export default defineComponent ({
     name : 'Tasks',
     components: {Task},
     props : {
-        Tasks : Array as PropType<task[]>
+        Tasks : Array as PropType<task[]>,
+        onToggle:{
+            required : true,
+            type : Function
+        }
     }
     
 
