@@ -41,8 +41,8 @@ export default defineComponent({
         }
         const onSubmit = (event:Event) => {
             event.preventDefault()
-            if(!text.value){
-                alert('Please add a task')
+            if(!text.value || !day.value ){
+                alert('Please add task or day')
                 return
             }
             addTask({text:text.value,day:day.value,reminder:reminder.value})
