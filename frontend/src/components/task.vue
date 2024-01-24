@@ -1,5 +1,5 @@
 <template>
-  <div :class="{task:true , reminder:Task.reminder}" onclick={() => onToggle(Task.id)}>
+  <div :class="{task:true , reminder:Task.reminder}" @click="() => onToggle(Task._id)">
     <h3>{{ Task.text }}  </h3>
     <p>{{ Task.day }}</p>
   </div>
@@ -17,7 +17,7 @@ export default defineComponent ({
     },
     onToggle : {
       required : true,
-      type : Function as PropType<(event:MouseEvent)=> void>
+      type : Function 
     }
   //   onDelete : {
   //     required : true ,
