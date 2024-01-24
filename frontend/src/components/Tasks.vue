@@ -17,7 +17,7 @@ export default defineComponent ({
         Tasks : Array as PropType<task[]>,
         onToggle:{
             required : true,
-            type : Function
+            type : Function as PropType<(event : string | undefined) => void>
         }
     }
     
