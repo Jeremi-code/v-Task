@@ -42,10 +42,10 @@ export default defineComponent ({
       return data
     }
     const toggleReminder = async (id:string) => {
-      // const res = await fetch(`/api/task/${id}`, {
-      //   method : 'PUT'
-      // })
-      // const data : task = await res.json()
+      const res = await fetch(`/api/task/${id}`, {
+        method : 'PUT'
+      })
+      const data : task = await res.json()
       tasks.value= tasks.value!.map((task : task) =>
         task._id===id ? {...task,reminder:!task.reminder} : task
       )
