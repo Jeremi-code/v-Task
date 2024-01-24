@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="Task in Tasks" v-bind:key="Task._id">
-            <Task :Task="Task" :onToggle="onToggle"/>
+            <Task :Task="Task" :onToggle="onToggle" :onDelete="onDelete"/>
         </div>
     </div>
 </template>
@@ -18,6 +18,10 @@ export default defineComponent ({
         onToggle:{
             required : true,
             type : Function 
+        },
+        onDelete: {
+            type : Function,
+            required : true
         }
     }
     
