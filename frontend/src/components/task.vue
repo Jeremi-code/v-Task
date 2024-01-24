@@ -1,6 +1,6 @@
 <template>
-  <div :class="{task:true , reminder:Task.reminder}" @click="() => onToggle(Task._id)">
-    <h3>{{ Task.text }}  <FaTimes/> </h3>
+  <div :class="{task:true , reminder:Task.reminder}" @dblclick="() => onToggle(Task._id)">
+    <h3>{{ Task.text }}  <FaTimes :onDelete="onDelete" :task_id="Task._id"/> </h3>
     <p>{{ Task.day }}</p>
   </div>
 </template>
@@ -20,12 +20,12 @@ export default defineComponent ({
     onToggle : {
       required : true,
       type : Function 
-    }
-  //   onDelete : {
-  //     required : true ,
-  //     type : Function
+    },
+    onDelete : {
+      required : true ,
+      type : Function
 
-  // }
+  }
   }
 })
 
