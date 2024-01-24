@@ -1,15 +1,17 @@
 <template>
   <div :class="{task:true , reminder:Task.reminder}" @click="() => onToggle(Task._id)">
-    <h3>{{ Task.text }}  </h3>
+    <h3>{{ Task.text }}  <FaTimes/> </h3>
     <p>{{ Task.day }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { task } from "../types/TaskType";
+import FaTimes from "./FaTimes.vue";
 import { defineComponent, PropType } from "vue";
 export default defineComponent ({
   name : 'Task',
+  components : {FaTimes},
   props : {
     Task : {
       required : true,
@@ -45,7 +47,7 @@ export default defineComponent ({
   display: flex;
   align-items: center;
   margin:0;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 }
 .task p {
   margin : 0;
