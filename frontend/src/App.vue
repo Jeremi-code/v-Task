@@ -33,7 +33,7 @@ export default defineComponent ({
         method : 'DELETE'
       })
       if (tasks.value !== null) {
-        tasks.value.filter((task) => task.id !== id)
+        tasks.value.filter((task) => task._id !== id)
       }
     }
     const fetchTask = async (id:string) => {
@@ -42,14 +42,13 @@ export default defineComponent ({
       return data
     }
     const toggleReminder = async (id:string) => {
-      const res = await fetch(`/api/task/${id}`, {
-        method : 'PUT'
-      })
-      const data : task = await res.json()
+      // const res = await fetch(`/api/task/${id}`, {
+      //   method : 'PUT'
+      // })
+      // const data : task = await res.json()
       tasks.value= tasks.value!.map((task : task) =>
-        task.id===id ? {...task,reminder:data.reminder} : task
+        task._id===id ? {...task,reminder:!task.reminder} : task
       )
-      
     }
     const toggleShowAdd = () => {
       showAdd.value = !showAdd.value
@@ -58,11 +57,8 @@ export default defineComponent ({
       const getTasks = async () => {
         const data = await fetchTasks()
         tasks.value=data
-        console.log(data,'inin')
       }
        getTasks()
-      console.log(tasks)
-
     })
     return {fetchTasks,fetchTask,toggleReminder,deleteTask,tasks,addTasks,showAdd,toggleShowAdd}
   }
