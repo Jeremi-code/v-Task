@@ -32,9 +32,7 @@ export default defineComponent ({
        await fetch(`/api/task/${id}`, {
         method : 'DELETE'
       })
-      if (tasks.value !== null) {
-       tasks.value = tasks.value.filter((task) => task._id !== id)
-      }
+       tasks.value = tasks.value!.filter((task) => task._id !== id)
     }
     const fetchTask = async (id:string) => {
       const res = await fetch(`/api/task/${id}`)
