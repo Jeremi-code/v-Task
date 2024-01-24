@@ -33,7 +33,7 @@ export default defineComponent ({
         method : 'DELETE'
       })
       if (tasks.value !== null) {
-        tasks.value.filter((task) => task._id !== id)
+       tasks.value = tasks.value.filter((task) => task._id !== id)
       }
     }
     const fetchTask = async (id:string) => {
@@ -57,6 +57,7 @@ export default defineComponent ({
       const getTasks = async () => {
         const data = await fetchTasks()
         tasks.value=data
+        console.log(data)
       }
        getTasks()
     })
@@ -69,7 +70,7 @@ export default defineComponent ({
   <div class="container">
     <Header :showAdd="showAdd" :onAdd="toggleShowAdd"/>
     <AddTask v-if="showAdd" :addTask="addTasks" />
-    <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminder"/>
+    <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminder" :onDelete="deleteTask"/>
   </div>
 </template>
 
