@@ -1,58 +1,70 @@
 <template>
-    <form class="add-form" @submit="onSubmit">
-        <div class="form-control">
-            <label>Task</label>
-            <input type="text" @change="setText(($event.target as HTMLInputElement).value)" v-model="text">
-        </div>
-        <div class="form-control">
-            <label>Day & Time</label>
-            <input type="text" @change="setDate(($event.target as HTMLInputElement).value)" v-model="day"/>
-        </div>
-        <div class="form-control form-control-check">
-            <label>Set Reminder</label>
-            <input type="checkbox" @change="setReminder(($event.target as HTMLInputElement).checked)" v-model="reminder" >
-        </div>
-        <input type="submit" value="Save Task" class="btn btn-block"/>
-    </form>
+  <form class="add-form" @submit="onSubmit">
+    <div class="form-control">
+      <label>Task</label>
+      <input
+        type="text"
+        @change="setText(($event.target as HTMLInputElement).value)"
+        v-model="text"
+      />
+    </div>
+    <div class="form-control">
+      <label>Day & Time</label>
+      <input
+        type="text"
+        @change="setDate(($event.target as HTMLInputElement).value)"
+        v-model="day"
+      />
+    </div>
+    <div class="form-control form-control-check">
+      <label>Set Reminder</label>
+      <input
+        type="checkbox"
+        @change="setReminder(($event.target as HTMLInputElement).checked)"
+        v-model="reminder"
+      />
+    </div>
+    <input type="submit" value="Save Task" class="btn btn-block" />
+  </form>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-    props:{
-      addTask : {
-        type:Function,
-        required:true
-      }  
+  props: {
+    addTask: {
+      type: Function,
+      required: true,
     },
-    setup(props) {
-        const text = ref<String | null>(null)
-        const day = ref<String | null>(null)
-        const reminder = ref<boolean>(false)
-        const addTask = props.addTask
-        const setText = (target:string) => {
-            text.value = target
-        }
-        const setDate = (target:string) => {
-            day.value = target
-        }
-        const setReminder = (target:boolean) => {
-            reminder.value = target 
-        }
-        const onSubmit = (event:Event) => {
-            event.preventDefault()
-            if(!text.value || !day.value ){
-                alert('Please add task or day')
-                return
-            }
-            addTask({text:text.value,day:day.value,reminder:reminder.value})
-            setText('')
-            setDate('')
-            setReminder(false)
-        }
-        return {text,day,reminder,setText,setDate,setReminder,onSubmit}
-    },
-})
+  },
+  setup(props) {
+    const text = ref<String | null>(null);
+    const day = ref<String | null>(null);
+    const reminder = ref<boolean>(false);
+    const addTask = props.addTask;
+    const setText = (target: string) => {
+      text.value = target;
+    };
+    const setDate = (target: string) => {
+      day.value = target;
+    };
+    const setReminder = (target: boolean) => {
+      reminder.value = target;
+    };
+    const onSubmit = (event: Event) => {
+      event.preventDefault();
+      if (!text.value || !day.value) {
+        alert("Please add task or day");
+        return;
+      }
+      addTask({ text: text.value, day: day.value, reminder: reminder.value });
+      setText("");
+      setDate("");
+      setReminder(false);
+    };
+    return { text, day, reminder, setText, setDate, setReminder, onSubmit };
+  },
+});
 </script>
 <style scoped>
 .add-form {
@@ -114,5 +126,4 @@ export default defineComponent({
   display: block;
   width: 100%;
 }
-
 </style>
