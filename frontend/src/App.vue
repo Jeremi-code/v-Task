@@ -47,7 +47,7 @@ export default defineComponent ({
       })
       const data : task = await res.json()
       tasks.value= tasks.value!.map((task : task) =>
-        task._id===id ? {...task,reminder:!task.reminder} : task
+        task._id===id ? {...task,reminder:data.reminder} : task
       )
     }
     const toggleShowAdd = () => {
