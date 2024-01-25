@@ -55,7 +55,6 @@ export default defineComponent ({
       const getTasks = async () => {
         const data = await fetchTasks()
         tasks.value=data
-        console.log(data)
       }
        getTasks()
     })
