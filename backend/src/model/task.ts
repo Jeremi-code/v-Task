@@ -12,6 +12,10 @@ const taskSchema = new mongoose.Schema({
     reminder : {
         type: Boolean,
         required: true
+    },
+    isCompleted : {
+        type : Boolean,
+        required : true
     }
 })
 const Task = mongoose.model<DTask>('Task', taskSchema)
