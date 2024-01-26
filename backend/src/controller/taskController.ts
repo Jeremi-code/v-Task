@@ -27,7 +27,7 @@ const fetchDoneTasks = async (req:Request , res:Response) => {
     const doneTasks : DTask[] = await Task.find({isCompleted : true})
     res.json(doneTasks)
   } catch (error : any) {
-    res.status.(500).json({message:error.message});
+    res.status(500).json({message:error.message});
   }
 }
 const createTask = async (req: Request, res: Response) => {
