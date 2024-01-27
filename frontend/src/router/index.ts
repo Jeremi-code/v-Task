@@ -1,5 +1,5 @@
 
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import {createRouter,createWebHistory,RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Done_Tasks from '../views/Done_Tasks.vue'; // Update the path based on your project structure
 
@@ -18,8 +18,8 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
+    history: createWebHistory(),
+    routes,
 });
 
 export default router;
