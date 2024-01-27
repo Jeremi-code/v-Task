@@ -1,8 +1,7 @@
 <template>
     <header class = "header">
         <h1>Task Tracker</h1>
-        <CustomButton :onAdd="onAdd" :title="showAdd ? 'Close' : 'Add'" :color = "showAdd ? 'red' : 'green'"/>
-        
+        <CustomButton :onAdd="onAdd" :title="showAdd ? 'Close' : 'Add'" :color = "showAdd ? 'red' : 'green'"/>    
     </header>
 </template>
 
