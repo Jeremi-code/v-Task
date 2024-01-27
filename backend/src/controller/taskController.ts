@@ -4,8 +4,14 @@ import {DTask} from "../types/taskType"
 
 const fetchTasks = async (req: Request, res: Response) => {
   try {
-    const tasks: DTask[] = await Task.find();
-    res.json(tasks);
+    const status = req.query.status;
+    if (status === 'Done') {
+      const tasks: DTask[] = await Task.find({isCompleted:true});
+      res.json(tasks);
+    } else if (status === 'undone') {
+      const tasks: DTask[] = await Task.find({isCompleted:false});
+      res.json(tasks);
+    }
   } catch (error : any) {
     res.status(500).json({ message: error.message });
   }
@@ -22,14 +28,7 @@ const fetchTask = async (req: Request, res: Response) => {
     res.status(500).json({ message: error.message });
   }
 };
-const fetchDoneTasks = async (req:Request , res:Response) => {
-  try {
-    const doneTasks : DTask[] = await Task.find({isCompleted : true})
-    res.json(doneTasks)
-  } catch (error : any) {
-    res.status(500).json({message:error.message});
-  }
-}
+
 const createTask = async (req: Request, res: Response) => {
     const task: DTask = new Task({
         text: req.body.text,
