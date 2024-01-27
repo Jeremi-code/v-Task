@@ -136,10 +136,12 @@ export default defineComponent ({
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
+  font-family : 'poppins', sans-serif;
 }
 .links {
  display : flex; 
  justify-content: center;
+ font-family : 'Oswald', sans-serif;
 }
 .links a {
   margin : 10px;
@@ -147,6 +149,7 @@ export default defineComponent ({
 a {
   text-decoration : none;
   color : black;
+  font-size : 20px;
 }
 
 </style>
