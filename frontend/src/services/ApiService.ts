@@ -1,4 +1,4 @@
-import task from '../types/TaskType'
+import {task} from '../types/TaskType'
 
 const fetchTasks = async () => {
     const res = await fetch("/api/tasks")
@@ -21,7 +21,6 @@ const fetchTasks = async () => {
     await fetch(`/api/task/${id}`, {
      method : 'DELETE'
    })
-    tasks.value = tasks.value!.filter((task) => task._id !== id)
  }
  const fetchTask = async (id:string) => {
    const res = await fetch(`/api/task/${id}`)
