@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 import Tasks from "./components/Tasks.vue"
 import Header from "./components/Header.vue"
 import { defineComponent } from "vue";
@@ -87,4 +87,21 @@ export default defineComponent ({
   border-radius: 5px;
 }
 
+</style> -->
+<template>
+  <div>
+    <router-link to="/">Home</router-link>
+    <router-link to="/done_tasks">Done Tasks</router-link>
+    <router-view></router-view>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent ({
+    name : 'App'
+  });
+</script>
+
+<style >
 </style>
