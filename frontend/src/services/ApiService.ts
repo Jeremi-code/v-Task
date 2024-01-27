@@ -1,10 +1,10 @@
 import {task} from '../types/TaskType'
 
-const fetchTasks = async () => {
-    const res = await fetch("/api/tasks")
-    const data : task[] = await res.json()
-    return data
- }
+const fetchTasks = async (status : any) => {
+  const res = await fetch(`/api/tasks?status=${status}`)
+  const data: task[] = await res.json()
+  return data
+}
  const addTasks = async (task:task) => {
    const res : any = await fetch("/api/task",{
      method : 'POST',
