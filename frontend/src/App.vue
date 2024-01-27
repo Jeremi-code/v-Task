@@ -89,19 +89,64 @@ export default defineComponent ({
 
 </style> -->
 <template>
-  <div>
-    <router-link to="/">Home</router-link>
-    <router-link to="/done_tasks">Done Tasks</router-link>
-    <router-view></router-view>
+  <div class="container">
+    <Header :showAdd="showAdd" :onAdd="toggleShowAdd" />
+    <div class="contents">
+      <div class="links">
+        <router-link to="/">Home</router-link>
+        <router-link to="/done_tasks">Done_Tasks</router-link>
+      </div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import Header from "./components/Header.vue";
+// import { RouterLink,RouterView } from 'vue-router';
+// import Home from "./views/Home.vue";
+// import Done_Tasks from "./views/Done_Tasks.vue";
 export default defineComponent ({
-    name : 'App'
+    name : 'App',
+    components : {Header},
+    setup() {
+    const showAdd = ref<boolean>(false)
+    const toggleShowAdd = () => {
+      showAdd.value = !showAdd.value
+    }
+      return {toggleShowAdd,showAdd}
+    }
   });
 </script>
 
 <style >
+*{
+  box-sizing : border-box;
+  padding : 0px;
+  margin : 0px;
+}
+.container {
+  display : flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 5px;
+}
+.links {
+ display : flex; 
+ justify-content: center;
+}
+.links a {
+  margin : 10px;
+}
+a {
+  text-decoration : none;
+  color : black;
+}
+
 </style>
