@@ -6,18 +6,27 @@
 </template>
 
 <script lang="ts">
-    import { defineComponent, PropType } from "vue";
+    import { defineComponent } from "vue";
+    import { useStore } from "vuex";
     import CustomButton from "./CustomButton.vue"
     export default defineComponent({
         name : 'Header',
         components : {CustomButton},
-        props : {
-            onAdd : {
-                required:true,
-                type:Function as PropType <(event:MouseEvent) => void>
-            },
-            showAdd : Boolean
-        },
+        // props : {
+        //     onAdd : {
+        //         required:true,
+        //         type:Function as PropType <(event:MouseEvent) => void>
+        //     },
+        //     showAdd : Boolean
+        // },
+        setup() {
+            const store = useStore()
+            const onAdd = () => {
+                store.commit('toggleShowAdd')
+            }
+            const showAdd = store.getters.showAdd
+            return {onAdd,showAdd}
+        }
 
     })
     
