@@ -1,16 +1,18 @@
 <template>
   <div>
+    <AddTask v-if="showAdd" :addTask="addTasks" />
     <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminderHandler" :onDelete="deleteTaskHandler"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import { ref, onMounted } from "vue";
 import { task } from "../types/TaskType";
 import {deleteTask, fetchTasks, toggleReminder} from '../services/ApiService'
 import AddTask from "../components/AddTask.vue";
 import Tasks from "../components/Tasks.vue";
+import { useStore } from "vuex";
 export default defineComponent({
   components: { AddTask,Tasks },
   name: "Home",
@@ -22,10 +24,14 @@ export default defineComponent({
         task._id === id ? { ...task, reminder: data.reminder } : task
       );
     }
+    const store = useStore()
     const deleteTaskHandler = async (id:string) => {
       await deleteTask(id);
       tasks.value = tasks.value!.filter((task) => task._id !== id);
     };
+    const showAdd = computed(() => {
+      return store.state.getters.shoAdd
+    })
 
     onMounted(async () => {
       const getTasks = async () => {
@@ -34,7 +40,7 @@ export default defineComponent({
       };
       getTasks();
     });
-    return {toggleReminderHandler,tasks,deleteTaskHandler};
+    return {toggleReminderHandler,tasks,deleteTaskHandler,showAdd};
   },
 });
 </script>
