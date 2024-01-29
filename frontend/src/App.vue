@@ -96,6 +96,7 @@ export default defineComponent ({
         <router-link to="/">Home</router-link>
         <router-link to="/done_tasks">Done_Tasks</router-link>
       </div>
+      <AddTask v-if="showAdd" :addTask="addTasks" />
       <router-view></router-view>
     </div>
   </div>
