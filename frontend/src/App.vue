@@ -90,7 +90,7 @@ export default defineComponent ({
 </style> -->
 <template>
   <div class="container">
-    <Header :showAdd="showAdd" :onAdd="toggleShowAdd" />
+    <Header  />
     <div class="contents">
       <div class="links">
         <router-link to="/">Home</router-link>
@@ -102,7 +102,7 @@ export default defineComponent ({
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent} from "vue";
 import Header from "./components/Header.vue";
 // import { RouterLink,RouterView } from 'vue-router';
 // import Home from "./views/Home.vue";
@@ -110,13 +110,13 @@ import Header from "./components/Header.vue";
 export default defineComponent ({
     name : 'App',
     components : {Header},
-    setup() {
-    const showAdd = ref<boolean>(false)
-    const toggleShowAdd = () => {
-      showAdd.value = !showAdd.value
-    }
-      return {toggleShowAdd,showAdd}
-    }
+    // setup() {
+    // const showAdd = ref<boolean>(false)
+    // const toggleShowAdd = () => {
+    //   showAdd.value = !showAdd.value
+    // }
+    //   return {toggleShowAdd,showAdd}
+    // }
   });
 </script>
 
