@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-    import { defineComponent } from "vue";
+    import { computed, defineComponent } from "vue";
     import { useStore } from "vuex";
     import CustomButton from "./CustomButton.vue"
     export default defineComponent({
@@ -24,7 +24,9 @@
             const onAdd = () => {
                 store.commit('toggleShowAdd')
             }
-            const showAdd = store.getters.showAdd
+            const showAdd = computed(() => {
+                return store.getters.showAdd
+            })
             return {onAdd,showAdd}
         }
 
