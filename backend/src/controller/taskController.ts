@@ -4,12 +4,14 @@ import {DTask} from "../types/taskType"
 
 const fetchTasks = async (req: Request, res: Response) => {
   try {
+    console.log('what is going on here')
     const status = req.query.status;
     if (status === 'Done') {
-      const tasks: DTask[] = await Task.find({isCompleted:true});
+      const tasks: DTask[] | null = await Task.find({isCompleted:true});
       res.json(tasks);
     } else if (status === 'undone') {
-      const tasks: DTask[] = await Task.find({isCompleted:false});
+      const tasks: DTask[] | null = await Task.find({isCompleted:'false'});
+      // const tasks : DTask[] | null = await Task.find({text : 'go to university'})
       res.json(tasks);
     }
   } catch (error : any) {
