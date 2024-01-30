@@ -57,7 +57,7 @@ export default defineComponent({
         alert("Please add task or day");
         return;
       }
-      addTask({ text: text.value, day: day.value, reminder: reminder.value });
+      addTask({ text: text.value, day: day.value, reminder: reminder.value,isCompleted : false });
       setText("");
       setDate("");
       setReminder(false);
