@@ -36,6 +36,7 @@ const createTask = async (req: Request, res: Response) => {
         text: req.body.text,
         day: req.body.day,
         reminder: req.body.reminder,
+        isCompleted : req.body.isCompleted
     });
     try {
         const newTask = await task.save();
