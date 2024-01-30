@@ -2,5 +2,6 @@ export interface task {
     _id?: string;
     text : String,
     day : String,
-    reminder : boolean
+    reminder : boolean,
+    isCompleted : boolean
 }
