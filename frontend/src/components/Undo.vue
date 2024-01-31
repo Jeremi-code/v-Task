@@ -19,7 +19,8 @@ export default defineComponent({
         onCompleted : {
             type : Function,
             required : true
-        }
+        },
+        task_id : String
     },
   setup() {
     return {};
