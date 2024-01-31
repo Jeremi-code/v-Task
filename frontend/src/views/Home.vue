@@ -38,7 +38,7 @@ export default defineComponent({
     })
     const toggleCompletedHandler = async(id:string) => {
       const data = await toggleIsCompleted(id)
-      tasks.value = tasks.value!.filter((task) => task._id ! == data._id) 
+      tasks.value = tasks.value!.filter((task) => task._id !== data._id) 
     }
 
     onMounted(async () => {
