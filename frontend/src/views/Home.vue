@@ -1,7 +1,7 @@
 <template>
   <div>
     <AddTask v-if="showAdd" :addTask="addTaskHandler" />
-    <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminderHandler" :onDelete="deleteTaskHandler"/>
+    <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminderHandler" :onDelete="deleteTaskHandler" :onCompleted="toggleCompletedHandler"/>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import { computed, defineComponent } from "vue";
 import { ref, onMounted } from "vue";
 import { task } from "../types/TaskType";
-import {deleteTask, fetchTasks, toggleReminder,addTasks} from '../services/ApiService'
+import {deleteTask, fetchTasks, toggleReminder,addTasks,toggleIsCompleted} from '../services/ApiService'
 import AddTask from "../components/AddTask.vue";
 import Tasks from "../components/Tasks.vue";
 import { useStore } from "vuex";
@@ -36,6 +36,10 @@ export default defineComponent({
     const showAdd = computed(() => {
       return store.getters.showAdd
     })
+    const toggleCompletedHandler = async(id:string) => {
+      const data = await toggleIsCompleted(id)
+      tasks.value = tasks.value!.filter((task) => task._id ! == data._id) 
+    }
 
     onMounted(async () => {
       const getTasks = async () => {
@@ -44,7 +48,7 @@ export default defineComponent({
       };
       getTasks();
     });
-    return {toggleReminderHandler,tasks,deleteTaskHandler,showAdd,addTaskHandler};
+    return {toggleReminderHandler,tasks,deleteTaskHandler,showAdd,addTaskHandler,toggleCompletedHandler};
   },
 });
 </script>
