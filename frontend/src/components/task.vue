@@ -1,7 +1,7 @@
 <template>
   <div :class="{task:true , reminder:Task.reminder}" @dblclick="() => onToggle(Task._id)">
     <h3>{{ Task.text }}
-      <Icons :task_id="Task._id" :onDelete="onDelete"/>
+      <Icons :task_id="Task._id" :onDelete="onDelete" :onCompleted="onCompleted"/>
     </h3>
     <p>{{ Task.day }}</p>
   </div>
@@ -29,7 +29,12 @@ export default defineComponent ({
       required : true ,
       type : Function
 
-  }
+    },
+    onCompleted : {
+      required : true,
+      type : Function
+    }
+
   },
   setup() {
     const checkboxclick=() => {
