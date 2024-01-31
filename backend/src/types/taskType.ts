@@ -2,5 +2,6 @@ import {Document} from "mongoose"
 export interface DTask extends Document {
     text : string,
     day : string,
-    reminder : boolean
+    reminder : boolean,
+    isCompleted : boolean
 }
