@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Tasks v-if="tasks?.values" :Tasks="tasks" :onDelete="deleteTaskHandler"/>
+    <Tasks v-if="tasks?.values" :Tasks="tasks" :onDelete="deleteTaskHandler" :onCompleted="toggleCompletedHandler"/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted,ref } from "vue";
 import Tasks from "../components/Tasks.vue"
-import { fetchTasks,deleteTask } from "../services/ApiService";
+import { fetchTasks,deleteTask,toggleIsCompleted } from "../services/ApiService";
 import {task} from "../types/TaskType"
 export default defineComponent({
   name: "Done_Tasks",
@@ -19,6 +19,11 @@ export default defineComponent({
       await deleteTask(id)
       tasks.value = tasks.value!.filter((task) => task._id !== id)
     }
+    const toggleCompletedHandler = async(id:string) => {
+      const data = await toggleIsCompleted(id)
+      console.log(data)
+      tasks.value = tasks.value!.filter((task) => task._id !== id) 
+    }
     onMounted (async () => {
       const getTasks = async () => {
         const data = await fetchTasks('Done' as string)
@@ -26,7 +31,7 @@ export default defineComponent({
       };
       getTasks();
     })
-    return {tasks,deleteTaskHandler}
+    return {tasks,deleteTaskHandler,toggleCompletedHandler}
   },
 });
 
