@@ -1,15 +1,20 @@
 <template>
-  <svg width="22" height="22">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="15"
+    height="25"
+    viewBox="0 0 24 24"
+  >
     <path
-      d="M13.5 3C8.81 3 5 6.81 5 11.5S8.81 20 13.5 20 22 16.19 22 11.5 18.19 3 13.5 3zm0 16c-3.59 0-6.5-2.91-6.5-6.5S9.91 6 13.5 6 20 8.91 20 12.5 17.09 20 13.5 20zM11 9H7v4h4c1.1 0 2-.9 2-2s-.9-2-2-2z"
+      d="M12 0c-3.31 0-6.291 1.353-8.459 3.522l-2.48-2.48-1.061 7.341 7.437-.966-2.489-2.488c1.808-1.808 4.299-2.929 7.052-2.929 5.514 0 10 4.486 10 10s-4.486 10-10 10c-3.872 0-7.229-2.216-8.89-5.443l-1.717 1.046c2.012 3.803 6.005 6.397 10.607 6.397 6.627 0 12-5.373 12-12s-5.373-12-12-12z"
     />
   </svg>
 </template>
 <script lang="ts">
-import { defineComponent} from 'vue';
+import { defineComponent } from "vue";
 export default defineComponent({
-  name: 'Undo',
-  props: {},
+  name: "Undo",
+  //   props: {},
   setup() {
     return {};
   },
