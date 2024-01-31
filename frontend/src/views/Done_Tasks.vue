@@ -1,21 +1,23 @@
 <template>
   <div>
-    <Tasks v-if="tasks?.values" :Tasks="tasks" :onToggle="onToggle"/>
+    <Tasks v-if="tasks?.values" :Tasks="tasks" :onDelete="deleteTaskHandler"/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted,ref } from "vue";
 import Tasks from "../components/Tasks.vue"
-import { fetchTasks } from "../services/ApiService";
+import { fetchTasks,deleteTask } from "../services/ApiService";
 import {task} from "../types/TaskType"
 export default defineComponent({
   name: "Done_Tasks",
   components: {Tasks},
   setup() {
     let tasks = ref<task[] | null>(null)
-    const onToggle= () => {
-      console.log('just for now')
+
+    const deleteTaskHandler = async (id:string) => {
+      await deleteTask(id)
+      tasks.value = tasks.value!.filter((task) => task._id !== id)
     }
     onMounted (async () => {
       const getTasks = async () => {
@@ -24,7 +26,7 @@ export default defineComponent({
       };
       getTasks();
     })
-    return {tasks,onToggle}
+    return {tasks,deleteTaskHandler}
   },
 });
 
