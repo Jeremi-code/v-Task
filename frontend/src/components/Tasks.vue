@@ -16,16 +16,15 @@ export default defineComponent ({
     props : {
         Tasks : Array as PropType<task[]>,
         onToggle:{
-            required : true,
-            type : Function 
+            required :false,
+            type : Function,
+            default : null
         },
         onDelete: {
             type : Function,
             required : true
         }
     }
-    
-
 })
 </script>
 
