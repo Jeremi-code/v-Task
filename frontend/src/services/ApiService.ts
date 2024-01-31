@@ -29,10 +29,25 @@ const fetchTasks = async (status : any) => {
  }
  const toggleReminder = async (id:string) => {
    const res = await fetch(`/api/task/${id}`, {
-     method : 'PUT'
+     method : 'PUT',
+     headers : {
+        'Content-Type':'application/json'
+      },
+     body : JSON.stringify({reminder : true}), 
    })
    const data : task = await res.json()
    return data
  }
+ const toggleIsCompleted = async (id:string) => {
+  const res = await fetch(`/api/task/${id}`, {
+    method : 'PUT',
+    headers : {
+      'Content-Type':'application/json'
+    },
+    body : JSON.stringify({isCompleted : true}),
+  })
+  const data : task = await res.json()
+  return data
+}
 
- export {fetchTasks, addTasks, deleteTask, fetchTask, toggleReminder}
+ export {fetchTasks, addTasks, deleteTask, fetchTask, toggleReminder,toggleIsCompleted}
