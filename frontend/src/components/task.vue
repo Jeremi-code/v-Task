@@ -1,10 +1,7 @@
 <template>
   <div :class="{task:true , reminder:Task.reminder}" @dblclick="() => onToggle(Task._id)">
     <h3>{{ Task.text }}
-      <div class="icons">
-        <input type="checkbox" @change="() => checkboxclick"/>
-        <FaTimes :onDelete="onDelete" :task_id="Task._id"/> 
-      </div>  
+      <Icons :task_id="Task._id" :onDelete="onDelete"/>
     </h3>
     <p>{{ Task.day }}</p>
   </div>
@@ -13,10 +10,11 @@
 <script lang="ts">
 import { task } from "../types/TaskType";
 import FaTimes from "./FaTimes.vue";
+import Icons from "./Icons.vue";
 import { defineComponent, PropType } from "vue";
 export default defineComponent ({
   name : 'Task',
-  components : {FaTimes},
+  components : {FaTimes,Icons},
   props : {
     Task : {
       required : true,
@@ -65,10 +63,5 @@ export default defineComponent ({
 .task p {
   margin : 0;
 }
-.icons {
-  display : flex;
-}
-.icons input {
-  margin : 0px 5px;
-}
+
 </style>
