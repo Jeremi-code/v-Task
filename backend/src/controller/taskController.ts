@@ -46,13 +46,19 @@ const createTask = async (req: Request, res: Response) => {
     }
 };
 const updateTask = async (req: Request, res: Response) => {
-  // const { text,date,reminder } = req.body;
+  const { reminder,isCompleted } = req.body;
   try {
     const task : DTask | null = await Task.findById(req.params.id);
     if (task) {
       // task.text = text || task.text;
       // task.day = date || task.day;
       // task.reminder = reminder || task.reminder;
+      if (isCompleted !== undefined) {
+        task.isCompleted = !task.isCompleted;
+      }
+      if (reminder !== undefined) {
+        task.reminder = !task.reminder;
+      }
       task.reminder = !task.reminder
       const updatedTask = await task.save();
       res.status(201).json(updatedTask);
