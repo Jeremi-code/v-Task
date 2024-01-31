@@ -1,6 +1,11 @@
 <template>
   <div :class="{task:true , reminder:Task.reminder}" @dblclick="() => onToggle(Task._id)">
-    <h3>{{ Task.text }}  <FaTimes :onDelete="onDelete" :task_id="Task._id"/> </h3>
+    <h3>{{ Task.text }}
+      <div class="icons">
+        <input type="checkbox" @change="() => checkboxclick"/>
+        <FaTimes :onDelete="onDelete" :task_id="Task._id"/> 
+      </div>  
+    </h3>
     <p>{{ Task.day }}</p>
   </div>
 </template>
@@ -18,16 +23,24 @@ export default defineComponent ({
       type : Object as PropType<task>
     },
     onToggle : {
-      required : true,
-      type : Function 
+      required : false,
+      type : Function, 
+      default : null
     },
     onDelete : {
       required : true ,
       type : Function
 
   }
+  },
+  setup() {
+    const checkboxclick=() => {
+      console.log('gotta ya')
+    }
+    return {checkboxclick}
   }
-})
+  }
+)
 
 </script>
 
@@ -51,5 +64,11 @@ export default defineComponent ({
 }
 .task p {
   margin : 0;
+}
+.icons {
+  display : flex;
+}
+.icons input {
+  margin : 0px 5px;
 }
 </style>
