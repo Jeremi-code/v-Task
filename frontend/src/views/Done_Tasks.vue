@@ -21,8 +21,7 @@ export default defineComponent({
     }
     const toggleCompletedHandler = async(id:string) => {
       const data = await toggleIsCompleted(id)
-      console.log(data)
-      tasks.value = tasks.value!.filter((task) => task._id !== id) 
+      tasks.value = tasks.value!.filter((task) => task._id !== data._id) 
     }
     onMounted (async () => {
       const getTasks = async () => {
