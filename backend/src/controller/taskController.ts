@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 import Task from "../model/task";
-import {DTask} from "../types/taskType"
+import {task} from "../types/taskType"
 
 const fetchTasks = async (req: Request, res: Response) => {
   try {
     const status = req.query.status;
     if (status === 'Done') {
-      const tasks: DTask[] | null = await Task.find({isCompleted:true});
+      const tasks: task[] | null = await Task.find({isCompleted:true});
       res.json(tasks);
     } else if (status === 'undone') {
-      const tasks: DTask[] | null = await Task.find({isCompleted:'false'});
+      const tasks: task[] | null = await Task.find({isCompleted:'false'});
       res.json(tasks);
     }
   } catch (error : any) {
@@ -18,7 +18,7 @@ const fetchTasks = async (req: Request, res: Response) => {
 };
 const fetchTask = async (req: Request, res: Response) => {
   try {
-    const task: DTask | null = await Task.findById(req.params.id);
+    const task: task | null = await Task.findById(req.params.id);
     if (task) {
       res.json(task);
     } else {
@@ -30,7 +30,7 @@ const fetchTask = async (req: Request, res: Response) => {
 };
 
 const createTask = async (req: Request, res: Response) => {
-    const task: DTask = new Task({
+    const task: task = new Task({
         text: req.body.text,
         day: req.body.day,
         reminder: req.body.reminder,
@@ -46,7 +46,7 @@ const createTask = async (req: Request, res: Response) => {
 const updateTask = async (req: Request, res: Response) => {
   const { reminder,isCompleted } = req.body;
   try {
-    const task : DTask | null = await Task.findById(req.params.id);
+    const task : task | null = await Task.findById(req.params.id);
     if (task) {
       if (isCompleted !== undefined) {
         task.isCompleted = !task.isCompleted;
@@ -65,7 +65,7 @@ const updateTask = async (req: Request, res: Response) => {
 };
 const deleteTask = async (req: Request, res: Response) => {
   try {
-    const task : DTask | null = await Task.findById(req.params.id);
+    const task : task | null = await Task.findById(req.params.id);
     if (task) {
       await task.deleteOne();
       res.json({ message: "Task deleted" });
