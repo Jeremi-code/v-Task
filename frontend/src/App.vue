@@ -4,7 +4,7 @@
     <div class="contents">
       <div class="links">
         <router-link to="/" :class="{'active' : routeValue}">Home</router-link>
-        <router-link to="/done_tasks">Done_Tasks</router-link>
+        <router-link to="/done_tasks" :class="{'active' : !routeValue}">Done_Tasks</router-link>
       </div>
       <router-view></router-view>
     </div>
@@ -21,13 +21,8 @@ export default defineComponent ({
     setup() {
       const router = useRouter()
       const currentRoute = computed(() => router.currentRoute.value.path)
-      let routeValue:boolean;
-      if (currentRoute.value === '/') {
-        routeValue = true
-      } else {
-        routeValue = false
-      }
-      return { currentRoute,routeValue }
+      const routeValue = computed(() => currentRoute.value === '/')
+      return { routeValue }
     }
   });
 </script>
