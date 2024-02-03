@@ -31,14 +31,9 @@ export default defineComponent ({
     },
     setup() {
         const router = useRouter();
-
         const currentRoute = router.currentRoute.value.path;
-        console.log(currentRoute)
-        
-        const checkboxclick=() => {
-            console.log('gotta ya')
-        }
-        return {checkboxclick,currentRoute}
+      
+        return {currentRoute}
     }
 }
 )
