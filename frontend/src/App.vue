@@ -40,7 +40,7 @@ export default defineComponent ({
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  border: 1px solid #ccc;
   padding: 30px;
   border-radius: 5px;
   font-family : 'poppins', sans-serif;
@@ -64,7 +64,7 @@ a {
   content : ' ';
   width : 100%;
   height : 5px;
-  background-color : steelblue;
+  background-color :green ;
   position : absolute;
   bottom : -5px;
   left : 0px;
