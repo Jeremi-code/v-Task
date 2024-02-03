@@ -35,12 +35,6 @@ export default defineComponent ({
       type : Function
     }
 
-  },
-  setup() {
-    const checkboxclick=() => {
-      console.log('gotta ya')
-    }
-    return {checkboxclick}
   }
   }
 )
