@@ -1,7 +1,15 @@
 <template>
-  <div :class="{task:true , reminder:Task.reminder}" @dblclick="() => onToggle(Task._id)">
-    <h3>{{ Task.text }}
-      <Icons :task_id="Task._id" :onDelete="onDelete" :onCompleted="onCompleted"/>
+  <div
+    :class="{ task: true, reminder: Task.reminder }"
+    @dblclick="() => onToggle(Task._id)"
+  >
+    <h3>
+      {{ Task.text }}
+      <Icons
+        :task_id="Task._id"
+        :onDelete="onDelete"
+        :onCompleted="onCompleted"
+      />
     </h3>
     <p>{{ Task.day }}</p>
   </div>
@@ -12,33 +20,29 @@ import { task } from "../types/TaskType";
 import FaTimes from "./FaTimes.vue";
 import Icons from "./Icons.vue";
 import { defineComponent, PropType } from "vue";
-export default defineComponent ({
-  name : 'Task',
-  components : {FaTimes,Icons},
-  props : {
-    Task : {
-      required : true,
-      type : Object as PropType<task>
+export default defineComponent({
+  name: "Task",
+  components: { FaTimes, Icons },
+  props: {
+    Task: {
+      required: true,
+      type: Object as PropType<task>,
     },
-    onToggle : {
-      required : false,
-      type : Function, 
-      default : null
+    onToggle: {
+      required: false,
+      type: Function,
+      default: null,
     },
-    onDelete : {
-      required : true ,
-      type : Function
-
+    onDelete: {
+      required: true,
+      type: Function,
     },
-    onCompleted : {
-      required : true,
-      type : Function
-    }
-
-  }
-  }
-)
-
+    onCompleted: {
+      required: true,
+      type: Function,
+    },
+  },
+});
 </script>
 
 <style>
@@ -56,11 +60,10 @@ export default defineComponent ({
 .task h3 {
   display: flex;
   align-items: center;
-  margin:0;
+  margin: 0;
   justify-content: space-between;
 }
 .task p {
-  margin : 0;
+  margin: 0;
 }
-
 </style>
