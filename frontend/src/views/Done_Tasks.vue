@@ -9,6 +9,7 @@ import { defineComponent, onMounted,ref } from "vue";
 import Tasks from "../components/Tasks.vue"
 import { fetchTasks,deleteTask,toggleIsCompleted } from "../services/ApiService";
 import {task} from "../types/TaskType"
+
 export default defineComponent({
   name: "Done_Tasks",
   components: {Tasks},
@@ -35,7 +36,3 @@ export default defineComponent({
 });
 
 </script>
-
-<style>
-
-</style>
