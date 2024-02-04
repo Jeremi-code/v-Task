@@ -15,13 +15,13 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "Undo",
-    props: {
-        task_id : String,
-        onCompleted : {
-            type : Function,
-            required : true
-        }
+  props: {
+    task_id: String,
+    onCompleted: {
+      type: Function,
+      required: true,
     },
+  },
   setup() {
     return {};
   },

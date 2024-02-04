@@ -1,9 +1,9 @@
 <template>
   <div>
-
-    <button class="btn" :style="{background : color}" @click="onAdd">{{ title }} </button>
+    <button class="btn" :style="{ background: color }" @click="onAdd">
+      {{ title }}
+    </button>
   </div>
-
 </template>
 
 <script lang="ts">
@@ -12,12 +12,12 @@ import { defineComponent, PropType } from "vue";
 export default defineComponent({
   name: "CustomButton",
   props: {
-    title : String ,
-    color : String,
-    onAdd : {
-      required : true,
-      type : Function as PropType<(event:MouseEvent)=> void>,
-    }
+    title: String,
+    color: String,
+    onAdd: {
+      required: true,
+      type: Function as PropType<(event: MouseEvent) => void>,
+    },
   },
 });
 </script>
