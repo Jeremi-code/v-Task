@@ -13,13 +13,6 @@ import { useRouter } from "vue-router";
     export default defineComponent({
         name : 'Header',
         components : {CustomButton},
-        // props : {
-        //     onAdd : {
-        //         required:true,
-        //         type:Function as PropType <(event:MouseEvent) => void>
-        //     },
-        //     showAdd : Boolean
-        // },
         setup() {
             const store = useStore()
             const router = useRouter()
