@@ -7,6 +7,7 @@
 
 <script lang="ts">
     import { computed, defineComponent } from "vue";
+import { useRouter } from "vue-router";
     import { useStore } from "vuex";
     import CustomButton from "./CustomButton.vue"
     export default defineComponent({
@@ -21,8 +22,10 @@
         // },
         setup() {
             const store = useStore()
+            const router = useRouter()
             const onAdd = () => {
-                store.commit('toggleShowAdd')
+                if (router.currentRoute.value.path === '/')
+                    store.commit('toggleShowAdd')
             }
             const showAdd = computed(() => {
                 return store.getters.showAdd
