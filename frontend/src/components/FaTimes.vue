@@ -1,5 +1,5 @@
 <template>
-    <div style="color:red;font-size:25px" @click="()=>onDelete(task_id)">&times;</div>
+    <div style="color:red;font-size:27px" @click="()=>onDelete(task_id)">&times;</div>
 </template>
 
 <script lang="ts">
