@@ -42,6 +42,7 @@ export default defineComponent ({
 .icons {
     display: flex;
     justify-content: space-between;
+    align-items : center;
     width: 50px;
 }
 </style>
