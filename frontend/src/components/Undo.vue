@@ -3,7 +3,7 @@
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="13"
-    viewBox="0 0 24 24"
+    viewBox="0 0 25 25"
     @click="() => onCompleted(task_id)"
   >
     <path
