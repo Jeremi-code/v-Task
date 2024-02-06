@@ -2,8 +2,9 @@
   <div>
     <AddTask v-if="showAdd" :addTask="addTaskHandler" />
     <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminderHandler" :onDelete="deleteTaskHandler" :onCompleted="toggleCompletedHandler"/>
-    <div v-else></div>
+    <div v-else class="notask">
       <h4>No Tasks To Show</h4>
+    </div>
   </div>
 </template>
 
@@ -54,3 +55,11 @@ export default defineComponent({
   },
 });
 </script>
+<style>
+.notask {
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  margin:50px 0;
+}
+</style>
