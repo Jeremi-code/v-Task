@@ -2,6 +2,8 @@
   <div>
     <AddTask v-if="showAdd" :addTask="addTaskHandler" />
     <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminderHandler" :onDelete="deleteTaskHandler" :onCompleted="toggleCompletedHandler"/>
+    <div v-else></div>
+      <h4>No Tasks To Show</h4>
   </div>
 </template>
 
