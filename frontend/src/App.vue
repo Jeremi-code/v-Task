@@ -8,6 +8,7 @@
       </div>
       <router-view></router-view>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -15,9 +16,10 @@
 import { computed, defineComponent} from "vue";
 import { useRouter } from "vue-router";
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 export default defineComponent ({
     name : 'App',
-    components : {Header},
+    components : {Header,Footer},
     setup() {
       const router = useRouter()
       const currentRoute = computed(() => router.currentRoute.value.path)
