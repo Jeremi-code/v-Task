@@ -1,6 +1,9 @@
 <template>
   <div>
     <Tasks v-if="tasks?.values" :Tasks="tasks" :onDelete="deleteTaskHandler" :onCompleted="toggleCompletedHandler"/>
+    <div v-else class="notask">
+      <h3>No Tasks To Show</h3>
+      </div>
   </div>
 </template>
 
@@ -36,3 +39,11 @@ export default defineComponent({
 });
 
 </script>
+<style>
+.notask {
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  margin:50px 0;
+}
+</style>
