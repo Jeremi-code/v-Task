@@ -3,7 +3,7 @@
     <AddTask v-if="showAdd" :addTask="addTaskHandler" />
     <Tasks v-if="tasks?.values " :Tasks="tasks" :onToggle="toggleReminderHandler" :onDelete="deleteTaskHandler" :onCompleted="toggleCompletedHandler"/>
     <div v-else class="notask">
-      <h4>No Tasks To Show</h4>
+      <h3>No Tasks To Show</h3>
     </div>
   </div>
 </template>
