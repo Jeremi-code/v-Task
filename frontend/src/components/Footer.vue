@@ -7,17 +7,17 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-export default defineComponent ({
-    name : "Footers",
-    components:{},
-    setup(){
-      return {}
-    }   
-})
+export default defineComponent({
+  name: "Footers",
+  components: {},
+  setup() {
+    return {};
+  },
+});
 </script>
 
 <style>
-    footer {
-        text-align: center;
-    }
+footer {
+  text-align: center;
+}
 </style>
