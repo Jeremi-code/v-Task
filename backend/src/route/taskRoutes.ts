@@ -1,5 +1,6 @@
 import express, {Router} from 'express'
 import { fetchTask,fetchTasks,createTask,updateTask,deleteTask } from '../controller/taskController'
+
 const taskRouter:Router = express.Router() 
 taskRouter.get('/task/:id',fetchTask)
 taskRouter.get('/tasks',fetchTasks)
